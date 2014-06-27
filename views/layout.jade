@@ -10,7 +10,15 @@ html
     link(rel='stylesheet', href='/stylesheets/fullcalendar.css')
     link(rel='stylesheet', href='/stylesheets/jquery.gritter.css')
     link(rel='stylesheet', href='/stylesheets/style.min.css')
-    script(src='/javascripts/jquery.js')
-    script(src='/bootstrap/js/bootstrap.min.js')
+    //
+      [if lt IE 9 ]>
+      link(rel='stylesheet', href='/stylesheets/style-ie.css')
+      <![endif]
+    //
+      [if lt IE 9 ]>
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+      script(src='assets/js/respond.min.js')
+   
+      link(rel='shortcut icon', href='favicon.ico')
   body
     block content
