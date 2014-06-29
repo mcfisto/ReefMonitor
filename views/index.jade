@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.navbar
+    div.container
+      button.navbar-toggle(type='button' data-toggle='collapse' data-target='.sidebar-nav.nav-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand
+        span Reef Monitor
