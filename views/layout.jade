@@ -2,22 +2,111 @@ doctype html
 html
   head
     title= title
-    meta(name='description' content='Reef Monitor - best monitor and controller of your aquarium')
+    meta(name='description' content='Reef Monitor - Best Monitor and Controller for Your Aquarium')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/jquery-ui-1.10.3.custom.min.css')
-    link(rel='stylesheet', href='/stylesheets/fullcalendar.css')
     link(rel='stylesheet', href='/stylesheets/jquery.gritter.css')
     link(rel='stylesheet', href='/stylesheets/style.min.css')
-    //
-      [if lt IE 9 ]>
-      link(rel='stylesheet', href='/stylesheets/style-ie.css')
-      <![endif]
-    //
-      [if lt IE 9 ]>
-      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
-      script(src='/js/respond.min.js')
+    <!--[if lt IE 9 ]>
+    link(rel='stylesheet', href='/stylesheets/style-ie.css')
+    <![endif]-->
+    <!--[if lt IE 9 ]>
+    script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    script(src='/js/respond.min.js')
+    <![endif]-->
     link(rel='shortcut icon', href='favicon.ico')
   body
-    block content
+    div.navbar
+      div.container
+        button.navbar-toggle(type='button' data-toggle='collapse' data-target='.sidebar-nav.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand
+          span Reef Monitor
+        div.header-nav
+          ul.nav.navbar-nav.pull-right
+            li.dropdown.hidden-xs
+              a.btn.dropdown-toggle(data-toggle='dropdown' href='#')
+                i.fa.fa-warning
+                | 
+                span.label.label-important.hidden-xs 2
+                | 
+                span.label.label-success.hidden-xs 11
+              ul.dropdown-menu.notifications
+                li
+                  span.dropdown-menu-title Máte 13 upozornění
+                li
+                  a.dropdown-menu-sub-footer Zobrazit všechna upozornění
+            li
+              a.btn(href='#')
+                i.fa.fa-wrench
+    div.container
+      div.row
+        div.col-sm-2.main-menu-span
+          div.sidebar-nav.nav-collapse.collapse.navbar-collapse
+            ul.nav.nav-tabs.nav-stacked.main-menu
+              li
+                a(href='#')
+                  i.fa.fa-home.icon
+                  span.hidden-sm Nástěnka
+              li
+                a(href='#')
+                  i.fa.fa-warning.icon
+                  span.hidden-sm.warning Upozornění
+              li
+                a(href='#')
+                  i.fa.fa-edit.icon
+                  span.hidden-sm Ruční měření
+              li
+                a(href='#')
+                  i.fa.fa-bar-chart-o.icon
+                  span.hidden-sm Grafy
+              li
+                a(href='/probes')
+                  i.fa.fa-eye.icon
+                  span.hidden-sm Čidla
+
+        block content
+    
+    <!--[if !IE]>-->
+    script(src='/js/jquery-2.0.3.min.js')
+    <!--<![endif]-->
+
+    <!--[if IE]>
+    script(src='/js/jquery-1.10.2.min.js')
+    <![endif]-->
+
+    <!--[if !IE]>-->
+    script(type='text/javascript').
+      window.jQuery || document.write("<script src='/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    <!--<![endif]-->
+
+    <!--[if IE]>
+    script(type='text/javascript').
+      window.jQuery || document.write("<script src='/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    <![endif]-->
+
+    script(src='/js/jquery-migrate-1.2.1.min.js')
+    script(src='/js/bootstrap.min.js')
+    script(src='/js/jquery-ui-1.10.3.custom.min.js')
+    script(src='/js/jquery.knob.modified.min.js')
+    script(src='/js/jquery.dataTables.min.js')
+    script(src='/js/dataTables.bootstrap.min.js')
+
+    <!--[if lte IE 8]>
+    script(src='/js/excanvas.min.js' language='javascript' type='text/javascript')
+    <![endif]-->
+
+    script(src='/js/jquery.flot.min.js')
+    script(src='/js/jquery.flot.pie.min.js')
+    script(src='/js/jquery.flot.stack.min.js')
+    script(src='/js/jquery.flot.resize.min.js')
+    script(src='/js/jquery.flot.time.min.js')
+    script(src='/js/jquery.sparkline.min.js')
+    script(src='/js/fullcalendar.min.js')
+    script(src='/js/jquery.gritter.min.js')
+    script(src='/js/default.min.js')
+    script(src='/js/core.min.js')

@@ -1,11 +1,13 @@
 extends layout
 
 block content
-  div.navbar
-    div.container
-      button.navbar-toggle(type='button' data-toggle='collapse' data-target='.sidebar-nav.nav-collapse')
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand
-        span Reef Monitor
+  div.col-sm-10(id='content')
+    div
+      hr
+      ul.breadcrumb
+        li
+          a(href='#') Domů
+        li
+          a(href='#') Nástěnka
+      hr
+    div.row.circleStats
