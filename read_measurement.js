@@ -5,17 +5,11 @@
 
 
 // my imports
-var Dao = require("./lib/Dao")();
 var Util = require("./lib/Util")();
 var Atlas = require("./lib/Atlas")();
 
 // declarations
-var dao = new Dao();
 var util = new Util();
-
-if (util.debug()){
-	dao.recreateTables();
-}
 
 var probeId = process.argv.slice(2)[0];
 console.log('Reading probe: ', probeId);

@@ -1,6 +1,6 @@
 var gpio = require('rpi-gpio');
 var async = require('async');
-var SerialPort = require("serialport").SerialPort
+var SerialPort = require("serialport").SerialPort;
 
 var serialPort = new SerialPort("/dev/ttyAMA0", {
   baudrate: 38400

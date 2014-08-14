@@ -24,7 +24,6 @@ block content
               thead
                 tr(role='row')
                   th Název
-                  th Kód
                   th Typ
                   th Hodnota
                   th Rozsah OK
@@ -32,56 +31,31 @@ block content
                   th Stav
                   th(style='width: 240px;') Akce
               tbody(role='alert')
-                tr
-                  td Teplota Sump
-                  td TEMP
-                  td 1Wire
-                  td
-                    span.label.label-warning 27,78 °C
-                  td 25-27 °C
-                  td 24-28 °C
-                  td
-                    label.switch.switch-success
-                      input.switch-input(type='checkbox', checked)
-                      span.switch-label(data-on='ON' data-off='OFF')
-                      span.switch-handle
-                  td
-                    a.btn.btn-primary(href='#' data-toggle="tooltip" data-placement="top" data-original-title="Upravit")
-                      i.fa.fa-edit
-                    | 
-                    a.btn.btn-info(href='#')
-                      i.fa.fa-tachometer
-                    | 
-                    a.btn.btn-inverse(href='#')
-                      i.fa.fa-bar-chart-o
-                    | 
-                    a.btn.btn-danger(href='#')
-                      i.fa.fa-trash-o 
-                tr
-                  td Teplota Sump
-                  td TEMP
-                  td 1Wire
-                  td
-                    span.label.label-important 29,78 °C
-                  td 25-27 °C
-                  td 24-28 °C
-                  td
-                    label.switch.switch-success
-                      input.switch-input(type='checkbox')
-                      span.switch-label(data-on='ON' data-off='OFF')
-                      span.switch-handle
-                  td
-                    a.btn.btn-primary(href='#')
-                      i.fa.fa-edit
-                    | 
-                    a.btn.btn-info(href='#')
-                      i.fa.fa-tachometer
-                    | 
-                    a.btn.btn-inverse(href='#')
-                      i.fa.fa-bar-chart-o
-                    | 
-                    a.btn.btn-danger(href='#')
-                      i.fa.fa-trash-o
+                each probe in probes
+                  tr
+                    td= probe.name
+                    td= probe.type
+                    td
+                      span.label.label-warning= probe.lastValue + ' ' + probe.unit
+                    td= probe.min + '-' + probe.max + ' ' + probe.unit
+                    td= probe.minW + '-' + probe.maxW + ' ' + probe.unit
+                    td
+                      label.switch.switch-success
+                        input.switch-input(type='checkbox', checked)
+                        span.switch-label(data-on='ON' data-off='OFF')
+                        span.switch-handle
+                    td
+                      a.btn.btn-primary(href='#' data-toggle="tooltip" data-placement="top" data-original-title="Upravit")
+                        i.fa.fa-edit
+                      | 
+                      a.btn.btn-info(href='#')
+                        i.fa.fa-tachometer
+                      | 
+                      a.btn.btn-inverse(href='#')
+                        i.fa.fa-bar-chart-o
+                      | 
+                      a.btn.btn-danger(href='#')
+                        i.fa.fa-trash-o
     div.row
       div.col-sm-12
         div.box
@@ -95,4 +69,9 @@ block content
               div.col-sm-2.col-md-1
                 a.quick-button-small.span1
                   i.fa.fa-search-plus
-                  p Nové čidlo
+                  p Nové elektronické čidlo
+                  span.notification.green 2
+              div.col-sm-2.col-md-1
+                a.quick-button-small.span1
+                  i.fa.fa-edit.icon
+                  p Nový typ ručního měření

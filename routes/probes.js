@@ -1,7 +1,13 @@
 /*
  * Probes pages.
  */
+var ProbeDao = require("../lib/dao/ProbeDao")();
+var probeDao = new ProbeDao();
 
 exports.list = function(req, res){
-  res.render('probes', { title: 'Reef Monitor' });
+	probeDao.readProbes(function(probes){
+		res.render('probes', { "title": 'Reef Monitor', "probes": probes});
+		// probeDao.finalize(); TODO
+	});
+  
 };
