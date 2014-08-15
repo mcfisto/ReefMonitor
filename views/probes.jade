@@ -6,9 +6,9 @@ block content
       hr
       ul.breadcrumb
         li
-          a(href='#') Domů
+          a(href='/') Domů
         li
-          a(href='#') Čidla
+          a(href='/probes') Čidla
       hr    
     div.row
       div.col-lg-12
@@ -67,11 +67,11 @@ block content
           div.box-content
             div.row
               div.col-sm-2.col-md-1
-                a.quick-button-small.span1
+                a.quick-button-small.span1(href='/probes/new-auto')
                   i.fa.fa-search-plus
                   p Nové elektronické čidlo
                   span.notification.green 2
               div.col-sm-2.col-md-1
-                a.quick-button-small.span1
+                a.quick-button-small.span1(href='/probes/new-manual')
                   i.fa.fa-edit.icon
                   p Nový typ ručního měření

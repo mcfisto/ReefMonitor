@@ -15,6 +15,7 @@ var session = require('express-session');
 var csrf = require('csurf');
 var errorhandler = require('errorhandler');
 var morgan  = require('morgan');
+var expressValidator = require('express-validator');
 
 
 var routes = require('./routes');
@@ -34,6 +35,7 @@ morgan({ format: 'dev', immediate: true }); // ex. logger
 app.use(compression());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 //app.use(express.limit('32mb'));
 app.use(serveStatic(path.join(__dirname, 'public')));
 
@@ -44,27 +46,28 @@ app.use(session({secret: 'HjN8*&&ahj[::9io'}));
 
 // CSRF protection middleware
 app.use(csrf());
-/*app.configure(function() {
-	app.use(function(req, res, next) {
-		res.locals.token = req.csrfToken();
-		next();
-	});
-}); //*/
+app.use(function(req, res, next) {
+	res.locals.csrftoken = req.csrfToken();
+	next();
+});
 
 // development only
 if (process.env.NODE_ENV === 'development') {
   app.use(errorhandler());
 }
 
+app.use(function(req,res,next){
+    res.locals.session = req.session;
+    next();
+});
 
 app.use(express.Router());
 
 app.get('/', routes.index);
 app.get('/probes', routesProbes.list);
-//app.get('/app/new', webApp.startOrder);
-//app.post('/app/step1Process', webApp.step1Process);
-//app.get('/app/step2Prepare', webApp.step2Prepare);
-//app.get('/app/text', routes.index);
+app.get('/probes/new-manual', routesProbes.newManual);
+app.get('/probes/new-auto', routesProbes.newAuto);
+app.post('/probes/save', routesProbes.save);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
