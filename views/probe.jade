@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  div.col-sm-10(id='content')
+    div
+      hr
+      ul.breadcrumb
+        li
+          a(href='/') Domů
+        li
+          a(href='/probes') Čidla
+        li
+          a Typ ručního měření
+      hr
+    div.row
+      div.col-lg-12
+        div.box
+          div.box-header
+            h2
+              i.fa.fa-edit
+              span.break
+              | Typ ručního měření
+            div.box-icon
+          div.box-content
+            - if (errors)
+              div.alert.alert-danger
+                strong Chyba v zadání
+                ul
+                  - each error in errors
+                    li= error.msg
+            form.form-horizontal(action='/probes/save', method='POST')
+              input(type='hidden', name='_csrf', value='#{csrftoken}')
+              input(type='hidden', name='frmType', value=frmType)
+              input(type='hidden', name='frmCode', value=frmCode)
+              div.form-group
+                label.col-sm-2.control-label(for='frmName') Název
+                div.col-sm-10
+                  input.form-control#frmName(name='frmName' type='text' placeholder='název měřené hodnoty (např. Teplota v hlavní nádrži)' value=frmName)
+              div.form-group
+                label.col-sm-2.control-label(for='frmUnit') Jednotka
+                div.col-sm-10
+                  input.form-control#frmUnit(name='frmUnit' type='text' placeholder='měrná jednotka (např. °C)' value=frmUnit)
+              div.form-group
+                label.col-sm-2.control-label(for='frmMinVal') Rozmezí OK
+                div.col-xs-2
+                  input.form-control.aqm-input-float#frmMinVal(name='frmMinVal' type='text' placeholder='minimum' value=frmMinVal)
+                div.col-xs-1.text-center
+                  i.fa.div.fa-arrows-h
+                div.col-xs-2
+                  input.form-control.aqm-input-float#frmMaxVal(name='frmMaxVal' type='text' placeholder='maximum' value=frmMaxVal)
+              div.form-group.has-error.has-feedback
+                label.col-sm-2.control-label(for='frmMinWVal') Rozmezí varování
+                div.col-xs-2
+                  input.form-control.aqm-input-float#frmMinWVal(name='frmMinWVal' type='text' placeholder='minimum (menší než min. OK)' value=frmMinWVal)
+                div.col-xs-1.text-center
+                  i.fa.div.fa-arrows-h
+                div.col-xs-2
+                  input.form-control.aqm-input-float#frmMaxWVal(name='frmMaxWVal' type='text' placeholder='maximum (větší než max. OK)' value=frmMaxWVal)
+              div.form-group
+                div.col-sm-offset-2.col-sm-10
+                  button.btn.btn-primary(type='submit' name='save') Uložit změny
+                  | 
+                  button.btn(type='submit' name='cancel') Zrušit
+               
