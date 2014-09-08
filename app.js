@@ -69,6 +69,8 @@ app.get('/probes/new-manual', routesProbes.newManual);
 app.get('/probes/new-auto', routesProbes.newAuto);
 app.post('/probes/save', routesProbes.save);
 
+global.__base = __dirname + '/';
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
