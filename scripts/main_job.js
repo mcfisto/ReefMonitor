@@ -28,6 +28,7 @@ var mainJob = function(tick){
 		probeDao.readProbes(false, function(probes){
 			if (probes){
 				probes.forEach(function(probe){
+					console.log("Probe: "+probe);
 					if (probe.type == probe.TYPES.AUTO && probe.isInService){
 						switch (probe.connectionType){
 							case probe.CONNECTION_TYPES.ONE_WIRE:
