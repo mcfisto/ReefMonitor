@@ -26,17 +26,19 @@ var mainJob = function(tick){
 	// read measurements of all active AUTO probes (every 10 minutes)
 	if (tick % 10 == 0){
 		probeDao.readProbes(false, function(probes){
-			for (probe in probes){
-				if (probe.type == probe.TYPES.AUTO && probe.isInService){
-					switch (probe.connectionType){
-						case probe.CONNECTION_TYPES.ONE_WIRE:
-							oneWire.read(probe);
-							break;
-						case probe.CONNECTION_TYPES.ATLAS:
-							//atlas.read(probe);
-							break;
+			if (probes){
+				probes.forEach(function(probe){
+					if (probe.type == probe.TYPES.AUTO && probe.isInService){
+						switch (probe.connectionType){
+							case probe.CONNECTION_TYPES.ONE_WIRE:
+								oneWire.read(probe);
+								break;
+							case probe.CONNECTION_TYPES.ATLAS:
+								//atlas.read(probe);
+								break;
+						}
 					}
-				}
+				});
 			}
 		});
 	}
