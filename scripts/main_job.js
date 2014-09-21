@@ -13,26 +13,30 @@ var probeDao = new ProbeDao();
 var OneWire = require(__base+"lib/OneWire")();
 var oneWire = new OneWire();
 
-var Atlas = require(__base+"lib/Atlas")();
-var atlas = new Atlas();
+/*var Atlas = require(__base+"lib/Atlas")();
+var atlas = new Atlas();//*/
+
+var LogDao = require(__base+"lib/dao/LogDao")();
+var logger = new LogDao();
 
 
 var mainJob = function(tick){
-	console.log('Tick: '+tick);
+	logger.log('DEBUG', 'Tick: '+tick);
 	
-	// read measurements of all active probes (every 10 minutes)
+	// read measurements of all active AUTO probes (every 10 minutes)
 	if (tick % 10 == 0){
 		probeDao.readProbes(false, function(probes){
 			for (probe in probes){
-				switch (probe.connectionType){
-					case probe.CONNECTION_TYPES.ONE_WIRE:
-						oneWire.read(probe);
-						break;
-					case probe.CONNECTION_TYPES.ATLAS:
-						atlas.read(probe);
-						break;
+				if (probe.type == probe.TYPES.AUTO && probe.isInService){
+					switch (probe.connectionType){
+						case probe.CONNECTION_TYPES.ONE_WIRE:
+							oneWire.read(probe);
+							break;
+						case probe.CONNECTION_TYPES.ATLAS:
+							//atlas.read(probe);
+							break;
+					}
 				}
-				
 			}
 		});
 	}
