@@ -22,4 +22,4 @@ var mainJob = function(tick){
 };
 
 
-paramsDao.getAndIncreaseTick(mainJob);
+paramsDao.getAndIncreaseTick(mainJob); //TODO transaction?

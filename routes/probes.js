@@ -1,10 +1,10 @@
 /*
  * Probes pages.
  */
-var ProbeDao = require("../lib/dao/ProbeDao")();
+var ProbeDao = require(__base+"lib/dao/ProbeDao")();
 var probeDao = new ProbeDao();
 
-var Probe = require("../lib/model/Probe")();
+var Probe = require(__base+"lib/model/Probe")();
 
 exports.list = function(req, res){
 	probeDao.readProbes(function(probes){

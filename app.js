@@ -17,6 +17,7 @@ var errorhandler = require('errorhandler');
 var morgan  = require('morgan');
 var expressValidator = require('express-validator');
 
+global.__base = __dirname + '/';
 
 var routes = require('./routes');
 var routesProbes = require('./routes/probes');
@@ -69,7 +70,6 @@ app.get('/probes/new-manual', routesProbes.newManual);
 app.get('/probes/new-auto', routesProbes.newAuto);
 app.post('/probes/save', routesProbes.save);
 
-global.__base = __dirname + '/';
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

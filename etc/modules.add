@@ -1,0 +1,5 @@
+w1-gpio
+w1-therm
+
+i2c-dev
+i2c-bcm2708
