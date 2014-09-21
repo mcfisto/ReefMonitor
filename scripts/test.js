@@ -17,7 +17,7 @@ dao.readProbe('PH1', function(probe){
 	});
 });
 
-dao.readProbes(function(probes){
+dao.readProbes(true, function(probes){
 	console.log(probes[0].code);
 });
 

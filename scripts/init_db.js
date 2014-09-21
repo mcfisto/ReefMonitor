@@ -1,8 +1,9 @@
 /**
  * Init DB script
  */
+global.__base = __dirname+'/../';
 
-var Dao = require("./lib/dao/GenericDao")();
+var Dao = require(__base+"lib/dao/GenericDao")();
 
 var dao = new Dao();
 

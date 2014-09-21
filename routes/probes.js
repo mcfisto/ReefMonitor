@@ -7,7 +7,7 @@ var probeDao = new ProbeDao();
 var Probe = require(__base+"lib/model/Probe")();
 
 exports.list = function(req, res){
-	probeDao.readProbes(function(probes){
+	probeDao.readProbes(true, function(probes){
 		res.render('probes', { "title": 'Reef Monitor', "probes": probes});
 		// probeDao.finalize(); TODO
 	});
