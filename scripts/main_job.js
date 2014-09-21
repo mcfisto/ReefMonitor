@@ -22,13 +22,13 @@ var logger = new LogDao();
 
 var mainJob = function(tick){
 	logger.log('DEBUG', 'Tick: '+tick);
+	console.log('Tick: '+tick);
 	
 	// read measurements of all active AUTO probes (every 10 minutes)
-	if (tick % 10 == 0){
+	if (tick % 1 == 0){
 		probeDao.readProbes(false, function(probes){
 			if (probes){
 				probes.forEach(function(probe){
-					console.log("Probe: "+probe);
 					if (probe.type == probe.TYPES.AUTO && probe.isInService){
 						switch (probe.connectionType){
 							case probe.CONNECTION_TYPES.ONE_WIRE:
