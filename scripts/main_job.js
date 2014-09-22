@@ -4,6 +4,13 @@
 
 global.__base = __dirname+'/../';
 
+var LogDao = require(__base+"lib/dao/LogDao")();
+var logger = new LogDao();
+
+process.on('uncaughtException', function(err) {
+	logger.log('ERROR', 'Caught exception: ' + err);
+});
+
 var ParamsDao = require(__base+"lib/dao/ParamsDao")();
 var paramsDao = new ParamsDao();
 
@@ -15,9 +22,6 @@ var oneWire = new OneWire();
 
 /*var Atlas = require(__base+"lib/Atlas")();
 var atlas = new Atlas();//*/
-
-var LogDao = require(__base+"lib/dao/LogDao")();
-var logger = new LogDao();
 
 
 var mainJob = function(tick){
