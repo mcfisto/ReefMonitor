@@ -25,7 +25,7 @@ var mainJob = function(tick){
 	console.log('Tick: '+tick);
 	
 	// read measurements of all active AUTO probes (every 10 minutes)
-	if (tick % 1 == 0){
+	if (tick % 10 == 0){
 		probeDao.readProbes(false, function(probes){
 			if (probes){
 				probes.forEach(function(probe){
