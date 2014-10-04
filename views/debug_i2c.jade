@@ -14,6 +14,22 @@ block content
       hr
     div.row
       div.col-lg-12
-        div.box
-          div.box-header
-          div.box-content     
+        div.box-header
+            h2
+              i.fa.fa-align-justify
+              span.break
+              | i2c PWM Driver
+            div.box-icon
+          div.box-content            
+            table.table.table-bordered.table-striped.bootstrap-datatable.datatable.dataTable
+              thead
+                tr(role='row')
+                  th Kanál
+                  th Hodnota
+              tbody
+                - var i = 0
+                while i < 16
+                  tr
+                    td= i
+                    td
+                  - i++
