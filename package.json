@@ -23,6 +23,7 @@
 	  "rpi-gpio": "0.0.4",
 	  "async": "0.8.0",
 	  "nodemon": "1.2.0",
-	  "express-validator": "2.3.0"
+	  "express-validator": "2.3.0",
+	  "adafruit-i2c-pwm-driver": "0.0.2"
   }
 }

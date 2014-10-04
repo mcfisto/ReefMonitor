@@ -21,14 +21,14 @@ global.__base = __dirname + '/';
 
 var routes = require('./routes');
 var routesProbes = require('./routes/probes');
-//var webApp = require('./routes/app');
+var debug = require('./routes/debug');
 var http = require('http');
 var path = require('path');
 
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 //app.use(favicon(__dirname + '/public/img/favicon.ico'));
@@ -69,6 +69,7 @@ app.get('/probes', routesProbes.list);
 app.get('/probes/new-manual', routesProbes.newManual);
 app.get('/probes/new-auto', routesProbes.newAuto);
 app.post('/probes/save', routesProbes.save);
+app.get('/debug/i2c', debug.i2c);
 
 
 http.createServer(app).listen(app.get('port'), function(){
