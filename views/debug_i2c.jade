@@ -29,14 +29,22 @@ block content
                   th Hodnota
               tbody
                 - var i = 0
+                while i < 8
+                  tr
+                    td= i
+                    td
+                      label.switch.switch-success
+                        input.switch-input.i2cCheckbox(type='checkbox', id='i2cCheckbox' + i)
+                        span.switch-label(data-on='ON' data-off='OFF')
+                        span.switch-handle
+                  - i++
                 while i < 16
                   tr
                     td= i
                     td
-                      div.slider.sliderMin.sliderGreen.ui-slider.ui-slider-horizontal.ui-widge.ui-widget-content.ui-corner-all(aria-disabled='false')
-                        div.ui-slider-range.ui-widget-header.ui-corner-all.ui-slider-range-min(style='width: 50%;')
-                          a.ui-slider-handle.ui-state-default.ui-corner-all(style='left: 50%;')
-                        div.field_notice
-                          | Procenta: 
-                          span.must.sliderMinLabel
+                      div.slider.i2cSlider.sliderGreen.ui-slider.ui-slider-horizontal.ui-widge.ui-widget-content.ui-corner-all(aria-disabled='false', id='i2cSlider' + i)
+                        div.ui-slider-range.ui-widget-header.ui-corner-all.ui-slider-range-min
+                        a.ui-slider-handle.ui-state-default.ui-corner-all
+                      div.field_notice
+                        span.must(id='i2cSlider' + i + 'Label') 0%
                   - i++

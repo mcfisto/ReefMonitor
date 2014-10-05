@@ -46,11 +46,11 @@ app.use(cookieParser('KuukL9*#85zR$!qW'));
 app.use(session({secret: 'HjN8*&&ahj[::9io'}));
 
 // CSRF protection middleware
-app.use(csrf());
+/*app.use(csrf());
 app.use(function(req, res, next) {
 	res.locals.csrftoken = req.csrfToken();
 	next();
-});
+});//*/
 
 // development only
 if (process.env.NODE_ENV === 'development') {
@@ -70,6 +70,7 @@ app.get('/probes/new-manual', routesProbes.newManual);
 app.get('/probes/new-auto', routesProbes.newAuto);
 app.post('/probes/save', routesProbes.save);
 app.get('/debug/i2c', debug.i2c);
+app.put('/debug/i2c/channel/:channel/value/:value', debug.i2cSet);
 
 
 http.createServer(app).listen(app.get('port'), function(){
