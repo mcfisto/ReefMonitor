@@ -12,6 +12,8 @@ exports.i2c = function(req, res){
 
 exports.i2cSet = function(req, res){
 	console.log("Put value: "+req.params.value);
+	req.sanitize('channel').toInt();
+	req.sanitize('value').toInt();
 	i2c.setValue(req.params.channel, req.params.value);
 	res.render('debug_i2c', { "title": 'Reef Monitor::i2c DEBUG'});
 };
