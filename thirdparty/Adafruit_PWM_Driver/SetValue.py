@@ -10,12 +10,8 @@ value = int(sys.argv[2])
 
 # instantiate
 pwm = PWM(0x40, debug=True)
-# pwm.setPWMFreq(100)
 
-text_file = open("Output.txt", "w")
-text_file.write("PWM: "+str(channel)+", "+str(value))
-text_file.close()
-
+# set PWM value
 pwm.setPWM(channel, 0, value)
 
 sys.exit(0)

@@ -16,7 +16,7 @@ $(".i2cSlider").slider({
 
 $('.i2cCheckbox').change(function() {
 	$.ajax({
-		url: '/debug/i2c/channel/0/value/' + ($(this).is(":checked") ? 100 : 0),
+		url: '/debug/i2c/channel/3/value/' + ($(this).is(":checked") ? 100 : 0),
 		type: 'PUT',
 		success: function(data) {	}
 	});

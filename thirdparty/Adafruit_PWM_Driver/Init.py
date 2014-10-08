@@ -6,4 +6,7 @@ from Adafruit_PWM_Servo_Driver import PWM
 pwm = PWM(0x40, debug=True)
 pwm.setPWMFreq(100)
 
-pwm.setAllPWM(0, 0)
+#pwm.setAllPWM(0, 0)
+
+
+sys.exit(0)
