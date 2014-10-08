@@ -43,7 +43,7 @@ app.use(serveStatic(path.join(__dirname, 'public')));
 
 // session support
 app.use(cookieParser('KuukL9*#85zR$!qW'));
-// app.use(session({secret: 'HjN8*&&ahj[::9io'}));
+app.use(session({secret: 'HjN8*&&ahj[::9io'}));
 
 // CSRF protection middleware
 /*app.use(csrf());
@@ -57,10 +57,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(errorhandler());
 }
 
-/*app.use(function(req,res,next){
+app.use(function(req,res,next){
     res.locals.session = req.session;
     next();
-});// */
+});
 
 app.use(express.Router());
 

@@ -10,7 +10,7 @@ value = int(sys.argv[2])
 
 # instantiate
 pwm = PWM(0x40, debug=True)
-pwm.setPWMFreq(100)
+# pwm.setPWMFreq(100)
 
 print("PWM: ", channel, ", ", value)
 pwm.setPWM(channel, 0, value)
