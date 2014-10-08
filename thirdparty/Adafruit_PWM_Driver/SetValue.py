@@ -14,3 +14,5 @@ pwm = PWM(0x40, debug=True)
 
 print("PWM: ", channel, ", ", value)
 pwm.setPWM(channel, 0, value)
+
+sys.exit(0)
