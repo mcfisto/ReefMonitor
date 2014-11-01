@@ -34,7 +34,7 @@ block content
                     td= i
                     td
                       label.switch.switch-success
-                        input.switch-input.i2cCheckbox(type='checkbox', id='i2cCheckbox' + i)
+                        input.switch-input.i2cCheckbox(type='checkbox', id='i2cCheckbox' + i, data-id=i)
                         span.switch-label(data-on='ON' data-off='OFF')
                         span.switch-handle
                   - i++
@@ -42,7 +42,7 @@ block content
                   tr
                     td= i
                     td
-                      div.slider.i2cSlider.sliderGreen.ui-slider.ui-slider-horizontal.ui-widge.ui-widget-content.ui-corner-all(aria-disabled='false', id='i2cSlider' + i)
+                      div.slider.i2cSlider.sliderGreen.ui-slider.ui-slider-horizontal.ui-widge.ui-widget-content.ui-corner-all(aria-disabled='false', id='i2cSlider' + i, data-id=i)
                         div.ui-slider-range.ui-widget-header.ui-corner-all.ui-slider-range-min
                         a.ui-slider-handle.ui-state-default.ui-corner-all
                       div.field_notice
