@@ -24,6 +24,8 @@
 	  "async": "0.8.0",
 	  "nodemon": "1.2.0",
 	  "express-validator": "2.3.0",
-	  "python-shell": "0.0.3"
+	  "python-shell": "0.0.3",
+	  "i2c": "~0.1.4",
+	  "sleep": "~1.1.3"
   }
 }
